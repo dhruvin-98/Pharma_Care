@@ -77,9 +77,10 @@ app.use("/api/prescriptions", prescriptionRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
 
-const server = app.listen(PORT, '127.0.0.1', () => {
-    console.log(`Server running on port ${PORT}`);
+const server = app.listen(PORT, HOST, () => {
+    console.log(`Server running on ${HOST}:${PORT}`);
 });
 
 // Enable SO_REUSEADDR to allow fast restarts

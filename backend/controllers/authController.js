@@ -50,7 +50,10 @@ const emailTransporter = nodemailer.createTransport(
       }
 );
 
-if (HAS_EMAIL_CREDENTIALS) {
+const shouldVerifyEmailTransporter =
+  HAS_EMAIL_CREDENTIALS && process.env.NODE_ENV !== "production";
+
+if (shouldVerifyEmailTransporter) {
   emailTransporter.verify((error) => {
     if (error) {
       console.error("❌ Email transporter verification failed:", error.message);
