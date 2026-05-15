@@ -133,7 +133,7 @@ const AuthenticatedApp = ({ userRole, handleLogout, activeView, setActiveView, t
       </main>
 
       {/* Role Switcher (For Demo) - REMAINS THE SAME */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => {
             const newRole = userRole === 'admin' ? 'customer' : (userRole === 'customer' ? 'admin' : 'admin');
@@ -151,7 +151,7 @@ const AuthenticatedApp = ({ userRole, handleLogout, activeView, setActiveView, t
             Switch to {userRole === 'admin' ? 'Customer' : (userRole === 'customer' ? 'Pharmacist' : 'Admin')}
           </span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
