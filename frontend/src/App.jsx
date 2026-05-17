@@ -13,7 +13,7 @@ import BillManagementView from './pages/BillManagementView.jsx';
 import PrescriptionsView from './pages/PrescriptionsView.jsx';
 import AnalyticsView from './pages/AnalyticsView.jsx';
 import FindMedicineView from './pages/FindMedicineView.jsx'; // Customer default
-import UploadPrescriptionView from './pages/UploadPrescriptionView.jsx';
+import CustomerOrdersView from './pages/CustomerOrdersView.jsx';
 import ProfileView from './components/ProfileView.jsx'; // <--- Keep this import
 
 import Profile from './components/Profile.jsx';
@@ -71,28 +71,18 @@ const renderView = (activeView, userRole) => {
       case 'analytics':
         return <AnalyticsView sales={mockSales} medicines={mockMedicines} />;
       case 'find-medicine':
-        return <FindMedicineView pharmacies={mockNearbyPharmacies} />;
-      case 'upload-rx':
-        return <UploadPrescriptionView />;
+        return <FindMedicineView />;
       default:
         return <Dashboard medicines={mockMedicines} prescriptions={mockPrescriptions} sales={mockSales} />;
     }
   } else if (userRole === 'customer') {
     switch (activeView) {
       case 'find-medicine':
-        return <FindMedicineView pharmacies={mockNearbyPharmacies} />;
-      case 'upload-rx':
-        return <UploadPrescriptionView />;
+        return <FindMedicineView />;
       case 'my-orders':
-        return (
-          <div className="bg-white rounded-xl shadow-md p-8 text-center">
-            <ShoppingCart className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-800 mb-2">No Orders Yet</h3>
-            <p className="text-gray-600">Upload a prescription to place your first order</p>
-          </div>
-        );
+        return <CustomerOrdersView />;
       default:
-        return <FindMedicineView pharmacies={mockNearbyPharmacies} />;
+        return <FindMedicineView />;
     }
   }
   return <Navigate to="/" replace />;

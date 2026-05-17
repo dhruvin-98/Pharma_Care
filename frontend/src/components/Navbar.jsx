@@ -6,7 +6,7 @@ import {
   LayoutDashboard, Package, FileText, TrendingUp, 
   Search, Upload, ShoppingCart, LogOut, Menu, X,
   Pill, User, Settings, Bell, ChevronDown,
-  HelpCircle, Mail, Check, Clock, Package2, AlertCircle, Receipt
+  HelpCircle, Mail, Check, Clock, Package2, AlertCircle, Receipt, MessageSquare
 } from 'lucide-react';
 
 const Navbar = ({ 
@@ -84,17 +84,16 @@ const Navbar = ({
       return [
         { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { id: 'inventory', label: 'Inventory', icon: Package },
+        { id: 'prescriptions', label: 'Prescriptions', icon: FileText },
         { id: 'billing', label: 'Create Bill', icon: Receipt },
         { id: 'bills', label: 'Bills', icon: FileText },
-        { id: 'prescriptions', label: 'Prescriptions', icon: FileText },
+        { id: 'messages', label: 'Messages', icon: MessageSquare },
         { id: 'analytics', label: 'Analytics', icon: TrendingUp },
-        // { id: 'find-medicine', label: 'Find Medicine', icon: Search },
-        // { id: 'upload-rx', label: 'Upload Rx', icon: Upload }
       ];
     } else if (userRole === 'customer') {
       return [
         { id: 'find-medicine', label: 'Find Medicine', icon: Search },
-        { id: 'upload-rx', label: 'Upload Prescription', icon: Upload },
+        { id: 'messages', label: 'Messages', icon: MessageSquare },
         { id: 'my-orders', label: 'My Orders', icon: ShoppingCart }
       ];
     }

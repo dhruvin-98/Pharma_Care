@@ -12,6 +12,7 @@ const {
     getLowStockMedicines,
     getMedicinesForBilling,
     reduceMedicineQuantity,
+    getPharmacistMedicines,
 } = require('../controllers/inventoryController');
 const { protect } = require('../middleware/authMiddleware'); // ASSUMED AUTH MIDDLEWARE
 
@@ -21,6 +22,7 @@ router.get('/alerts', protect, getAlerts);
 router.get('/search', protect, searchMedicines);
 router.get('/low-stock', protect, getLowStockMedicines);
 router.get('/for-billing', protect, getMedicinesForBilling);
+router.get('/public/pharmacist/:pharmacistId', protect, getPharmacistMedicines);
 
 router.route('/')
     .get(protect, getMedicines)      // GET all inventory items

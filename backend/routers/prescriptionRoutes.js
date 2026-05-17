@@ -8,6 +8,7 @@ const {
   approvePrescription,
   rejectPrescription,
   getUserPrescriptions,
+  createDirectOrder,
 } = require("../controllers/prescriptionController");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -34,6 +35,9 @@ router.post(
   upload.single("prescriptionImage"),
   uploadPrescription
 );
+
+// USER: Place direct medicine order
+router.post("/direct-order", protect, createDirectOrder);
 
 // PHARMACIST: Get all prescriptions
 router.get("/all", protect, onlyPharmacist, getAllPrescriptions);

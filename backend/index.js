@@ -54,10 +54,10 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/bills', billRoutes);
+app.use('/api/chat', require('./routers/chatRoutes'));
 
 // Health check route
 app.get('/', (req, res) => {

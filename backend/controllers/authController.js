@@ -543,10 +543,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   res.status(200).json(updatedUser);
 });
 
+/* ---------------------------------------------------------
+   GET VERIFIED PHARMACISTS
+--------------------------------------------------------- */
+const getPharmacists = asyncHandler(async (req, res) => {
+  const pharmacists = await User.find({ userType: "pharmacist", isVerified: true })
+    .select("-password -otp -otpExpires");
+  res.status(200).json(pharmacists);
+});
+
 module.exports = {
   sendOtp,
   verifyOtp,
   loginUser,
   getUserProfile,
   updateUserProfile,
+  getPharmacists,
 };
+

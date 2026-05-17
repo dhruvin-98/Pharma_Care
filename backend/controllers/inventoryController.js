@@ -297,6 +297,22 @@ const reduceMedicineQuantity = asyncHandler(async (req, res) => {
     });
 });
 
+/* ---------------------------------------------------------
+   @desc    Get public in-stock medicines for a pharmacist
+   @route   GET /api/inventory/public/pharmacist/:pharmacistId
+   @access  Private (Authenticated users, including Customers)
+--------------------------------------------------------- */
+const getPharmacistMedicines = asyncHandler(async (req, res) => {
+    const { pharmacistId } = req.params;
+    const medicines = await Medicine.find({
+        user: pharmacistId,
+        status: 'instock',
+        quantity: { $gt: 0 }
+    }).select('_id name category quantity pricePerPacket status expiryDate');
+
+    res.status(200).json(medicines);
+});
+
 module.exports = {
     getMedicines,
     addMedicine,
@@ -307,4 +323,5 @@ module.exports = {
     getLowStockMedicines,
     getMedicinesForBilling,
     reduceMedicineQuantity,
+    getPharmacistMedicines,
 };
